@@ -1,0 +1,55 @@
+<div class="filter-container mat-elevation-z2">
+  <div class="filter-header">
+    <h3>Filtros</h3>
+  </div>
+
+  <div class="filter-group">
+    <h5>Categorías</h5>
+    <div class="select-check-container">
+      <div class="select-checkbox">
+        <mat-checkbox *ngFor="let category of categories" (change)="toggleCategory(category.id)">
+          {{ category.name }}
+        </mat-checkbox>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-group">
+    <h5>Origen</h5>
+    <div class="select-check-container">
+      <div class="select-checkbox">
+        <mat-checkbox *ngFor="let brand of brands" (change)="toggleBrand(brand.id)">
+          {{ brand.name }}
+        </mat-checkbox>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-group">
+    <h5>Stock</h5>
+    <mat-button-toggle-group class="stock-toggle-group" name="stock" aria-label="Stock">
+      <mat-button-toggle value="true" (change)="toggleStockType(true)">En Stock</mat-button-toggle>
+      <mat-button-toggle value="false" (change)="toggleStockType(false)">Sin Stock</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div class="filter-group">
+    <h5>Precio</h5>
+    <div class="filter-slider-container">
+      <mat-slider class="filter-slider" [min]="minPrice" [max]="maxPrice">
+        <input [value]="selectedMinPrice" matSliderStartThumb (dragEnd)="minPriceChange($event)">
+        <input [value]="selectedMaxPrice" matSliderEndThumb (dragEnd)="maxPriceChange($event)">
+      </mat-slider>
+    </div>
+    <p><small>Precio: {{ selectedMinPrice | currency:'COP' }} - {{ selectedMaxPrice | currency:'COP' }}</small></p>
+  </div>
+
+  <div class="filter-group">
+    <h5>Calificación</h5>
+    <div class="select-checkbox">
+      <mat-checkbox *ngFor="let rating of ratings" (change)="toggleRating(rating.value)">
+        <app-rating [rating]="rating.value"></app-rating>
+      </mat-checkbox>
+    </div>
+  </div>
+</div>

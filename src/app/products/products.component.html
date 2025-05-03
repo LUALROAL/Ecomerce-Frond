@@ -1,0 +1,14 @@
+
+<div class="container  my-5">
+  <div class="row">
+    <div class="col-3">
+      <app-filters (filterChange)="filterChange($event)"></app-filters>
+    </div>
+    <div class="col-9">
+      <app-sort-header (sortHeaderChanges)="sortFilterChange($event)"></app-sort-header>
+      <p>PaginaIndex : - {{pageIndex}}</p>
+      <p>Filtro : - {{filters  | json}}</p>
+      <p>Orden : - {{sortFilters  | json}}</p>
+      <app-paginacion [pageItems]="500" [pageSize]="5" [currentPage]="0" (pageChange)="display($event)"></app-paginacion>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+# --------------------------------------
+# Output and build folders
+# --------------------------------------
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# --------------------------------------
+# Dependencies
+# --------------------------------------
+/node_modules
+npm-debug.log*
+yarn-error.log*
+
+# --------------------------------------
+# Angular cache
+# --------------------------------------
+/.angular/cache
+
+# --------------------------------------
+# IDEs and editors
+# --------------------------------------
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vs/
+/.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# --------------------------------------
+# History plugins
+# --------------------------------------
+.history/
+
+# --------------------------------------
+# Coverage and logs
+# --------------------------------------
+/coverage
+/libpeerconnection.log
+testem.log
+
+# --------------------------------------
+# Miscellaneous
+# --------------------------------------
+.sass-cache/
+/connect.lock
+/typings
+
+# --------------------------------------
+# OS generated files
+# --------------------------------------
+.DS_Store
+Thumbs.db

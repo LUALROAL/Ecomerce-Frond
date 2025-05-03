@@ -1,0 +1,32 @@
+
+.app-header{
+  border-bottom: 1px solid #5c6c75;
+}
+.app-icon > img{
+  height: 3.5rem;
+}
+.search-form{
+  margin-left: 20px;
+}
+.search-icon{
+  margin-left: -35px !important;
+  z-index: 10;
+}
+
+.btn-header{
+  margin: 5px;
+}
+
+a:hover{
+  cursor: pointer;
+}
+
+.router-link-active{
+  color: #0aad0a !important;
+}
+
+
+.button-categories{
+  border-radius: 5px !important;
+  background-color: #0aad0a !important;
+}

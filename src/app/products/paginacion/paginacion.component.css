@@ -1,0 +1,28 @@
+.pagination-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.mat-page{
+  display: inline-block;
+  margin: 0 5px;
+  padding: 5px 12px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  color: #6c757d;
+  cursor: pointer;
+}
+
+.mat-page-active, .mat-page:hover{
+  color: white !important;
+  background-color: #0aad0a !important;
+
+}
+
+.mat-page-disabled{
+  border: none !important;
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+}
