@@ -4,11 +4,13 @@ import { createEffect, Actions, ofType } from "@ngrx/effects";
 import { map, mergeMap, catchError } from "rxjs/operators";
 import { of } from "rxjs";
 import { loadCategory, loadCategorySuccess, loadCategoryFailure } from "./catalog.actions";
-import { CatalogService } from "./catalog.service";
+import { CatalogService } from "../../core/Services/catalog.service";
+
 
 
 @Injectable()
 export class CatalogEffects {
+
  loadCategory$ = createEffect(() =>
   this.actions$.pipe(
     ofType(loadCategory),

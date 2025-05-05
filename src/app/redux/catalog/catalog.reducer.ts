@@ -1,10 +1,10 @@
 import { create } from "domain";
-import { CatalogResDto } from "../../core/Models/catalog";
+import {  CategoriesResDto } from "../../core/Models/catalog";
 import { createReducer, on } from "@ngrx/store";
 import { loadCategory, loadCategorySuccess, loadCategoryFailure } from './catalog.actions';
 
 export interface CatalogState {
-  categories: CatalogResDto[] | null;
+  categories: CategoriesResDto[] | null;
   error: any | null;
 }
 

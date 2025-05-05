@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutModule } from './layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BASE_API } from './core/token/baseUrl.token';
+import { environment } from '../environments/environment.development';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiInterceptor } from './core/interceptor/api.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   providers: [
-    provideClientHydration(withEventReplay())
+    {
+      provide:BASE_API,
+      useValue:environment.apiUrl
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:ApiInterceptor,
+      multi:true
+    }
+
   ],
   bootstrap: [AppComponent]
 })
