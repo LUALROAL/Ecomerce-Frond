@@ -4,6 +4,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel'
 import { CarouselModule as owlCarouselModule } from 'ngx-owl-carousel-o';
 import {MatCardModule} from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { setTheme } from 'ngx-bootstrap/utils';
 
 @Component({
   selector: 'app-home-page',
@@ -19,7 +20,10 @@ import { CommonModule } from '@angular/common';
 })
 export class HomePageComponent {
   myInterval:number=1000
-
+  constructor() {
+    // 👇 Forzar la versión de Bootstrap
+    setTheme('bs5'); // O use 'bs4' si su proyecto usa Bootstrap 4
+  }
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
