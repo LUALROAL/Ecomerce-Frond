@@ -1,5 +1,5 @@
 export  interface ResponseDto<T> {
   message: string;
-  isSuccess: boolean;
+  isSuccessed: boolean;
   data: T | null;
 }

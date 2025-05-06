@@ -1,7 +1,7 @@
 import { create } from "domain";
 import {  CategoriesResDto } from "../../core/Models/catalog";
 import { createReducer, on } from "@ngrx/store";
-import { loadCategory, loadCategorySuccess, loadCategoryFailure } from './catalog.actions';
+import { loadCategories, loadCategorySuccess, loadCategoryFailure } from './catalog.actions';
 
 export interface CatalogState {
   categories: CategoriesResDto[] | null;
@@ -16,7 +16,7 @@ const initialState: CatalogState = {
 
 export const catalogReducer = createReducer(
   initialState,
-  on(loadCategory, (state) => ({ ...state })),
+  on(loadCategories, (state) => ({ ...state })),
   on(loadCategorySuccess, (state, { categories }) => ({
     ...state,
     categories,

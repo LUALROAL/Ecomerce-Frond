@@ -8,8 +8,14 @@ import { LayoutModule } from './layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BASE_API } from './core/token/baseUrl.token';
 import { environment } from '../environments/environment.development';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { ApiInterceptor } from './core/interceptor/api.interceptor';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { store } from './redux/store';
+import { CatalogEffects } from './redux/catalog/catalog.effects';
+import { CatalogService } from './core/Services/catalog.service';
+import { setTheme } from 'ngx-bootstrap/utils';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,10 @@ import { ApiInterceptor } from './core/interceptor/api.interceptor';
     BrowserModule,
     AppRoutingModule,
     LayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot(store),
+    EffectsModule.forRoot([]),
+    EffectsModule.forFeature([CatalogEffects])
   ],
   providers: [
     {
@@ -31,9 +40,18 @@ import { ApiInterceptor } from './core/interceptor/api.interceptor';
       provide:HTTP_INTERCEPTORS,
       useClass:ApiInterceptor,
       multi:true
-    }
+    },
+    // Reemplazo de HttpClientModule
+    provideHttpClient(
+      withFetch(),
+      withInterceptorsFromDi()),
+    CatalogService
 
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }
+
+

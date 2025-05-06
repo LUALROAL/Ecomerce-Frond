@@ -1,10 +1,10 @@
 
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { createEffect, Actions, ofType } from "@ngrx/effects";
 import { map, mergeMap, catchError } from "rxjs/operators";
 import { of } from "rxjs";
 import { CatalogService } from "../../core/Services/catalog.service";
-import { loadCategory, loadCategoryFailure, loadCategorySuccess } from "./catalog.actions";
+import { loadCategories, loadCategoryFailure, loadCategorySuccess } from "./catalog.actions";
 
 
 
@@ -12,18 +12,23 @@ import { loadCategory, loadCategoryFailure, loadCategorySuccess } from "./catalo
 
 @Injectable()
 export class CatalogEffects {
-  constructor(
-    private actions$: Actions,
-    private catalogService: CatalogService
-  ) {}
+  private actions$ = inject(Actions);
+  private catalogService = inject(CatalogService);
+  // constructor(
+  //   private actions$: Actions,
+  //   private catalogService: CatalogService
+  // ) { }
 
   loadCategories$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadCategory),
+      ofType(loadCategories),
       mergeMap(() =>
         this.catalogService.getCategories().pipe(
           map((res) => {
-            return res.isSuccess === true
+            debugger
+            console.log(res);
+             console.log(res.data);
+            return res.isSuccessed === true
               ? loadCategorySuccess({ categories: res.data ? res.data : [] })
               : loadCategoryFailure({ error: res.message });
           }),
