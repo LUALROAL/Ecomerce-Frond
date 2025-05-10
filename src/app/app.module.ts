@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutModule } from './layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BASE_API } from './core/token/baseUrl.token';
+import { BASE_API, BASE_IMAGE_API } from './core/token/baseUrl.token';
 import { environment } from '../environments/environment.development';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { ApiInterceptor } from './core/interceptor/api.interceptor';
@@ -36,6 +36,12 @@ import { setTheme } from 'ngx-bootstrap/utils';
       provide:BASE_API,
       useValue:environment.apiUrl
     },
+
+    {
+      provide:BASE_IMAGE_API,
+      useValue:environment.imageBaseApi
+    },
+
     {
       provide:HTTP_INTERCEPTORS,
       useClass:ApiInterceptor,

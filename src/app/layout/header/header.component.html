@@ -37,6 +37,18 @@
               <span>{{itemCat}}</span>
             </button>
           </mat-menu>
+
+          <button mat-flat-button [matMenuTriggerFor]="menuredux" aria-label="Example icon-button with a menu" class="button-categories">
+            <mat-icon>grid_view</mat-icon>
+            Categorías Redux
+          </button>
+          <mat-menu #menuredux="matMenu">
+            <button mat-menu-item *ngFor="let itemCat of categories$ | async">
+              <mat-icon>spa</mat-icon>
+              <span>{{itemCat.name}}</span>
+            </button>
+          </mat-menu>
+
           <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">

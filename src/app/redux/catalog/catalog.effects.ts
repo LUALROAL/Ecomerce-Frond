@@ -25,7 +25,6 @@ export class CatalogEffects {
       mergeMap(() =>
         this.catalogService.getCategories().pipe(
           map((res) => {
-            debugger
             console.log(res);
              console.log(res.data);
             return res.isSuccessed === true

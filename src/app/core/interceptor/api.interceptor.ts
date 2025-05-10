@@ -13,7 +13,7 @@ export class ApiInterceptor implements HttpInterceptor {
     console.log('Intercepting request:', request.url);
     if (!request.url.startsWith('http')) {
       const apiReq = request.clone({
-        url: `${this.apiUrl}/${request.url}`
+       url: `${this.apiUrl.replace(/\/$/, '')}/${request.url.replace(/^\/+/, '')}`
       });
       console.log('Modified URL:', apiReq.url);
       return next.handle(apiReq);
